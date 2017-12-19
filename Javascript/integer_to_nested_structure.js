@@ -7,10 +7,10 @@ function generate_number_list(start,end) {
   }
 }
 
-function isDivisible(number) {
+function is_divisible_by_prime(number) {
   var primes = [2,3,5,7];
   for(var i=0;i<primes.length;i++) {
-    if(number % primes[i] == 0) {
+    if(number % primes[i] === 0) {
       return false
     } else {
       return true
@@ -18,7 +18,7 @@ function isDivisible(number) {
   }
 }
 
+var primesList = numbers.map(is_divisible_by_prime(number));
+console.log(primesList);
 
-
-
-console.log(isDivisible(20));
+console.log(is_divisible_by_prime(20));
