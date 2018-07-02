@@ -1,28 +1,38 @@
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * In this kata, your job is to create a class Dictionary which you can add words to and their entries.
+ * https://www.codewars.com/kata/interactive-dictionary
+ */
 
 public class Dictionary
 {
-    List<String, String> listWord;
+    Map<String, String> entries;
 
     Dictionary() {
-        this.listWord = new ArrayList<>();
+        this.entries = new HashMap<>();
     }
 
+    /***
+     * Add word and definition to HashMap
+     * @param word
+     * @param definition
+     */
     public void newEntry(String word, String definition) {
-        this.listWord.add(word, definition);
-        System.out.print(definition);
+        this.entries.put(word, definition);
     }
 
-    public void look (String word) {
-        this.listWord.get(word);
-
+    /***
+     * Lookup word inside HashMap
+     * @param word
+     * @return {string}
+     */
+    public String look (String word) {
+        if(this.entries.containsKey(word)) {
+            return String.format("Word: %s - Definition: %s", word, this.entries.get(word));
+        } else {
+            return String.format("Cant find entry for %s", word);
+        }
     }
 }
-
-Dictionary d = new Dictionary();
-
-d.newEntry("Apple", "A fruit that grows on trees");
-
-System.out.println(d.look("Apple"));
-
-System.out.println(d.look("Banana"));
