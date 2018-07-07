@@ -1,3 +1,5 @@
+package src;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,27 +8,27 @@ import java.util.Map;
  * https://www.codewars.com/kata/interactive-dictionary
  */
 
-public class Dictionary
+public class DictionaryKata
 {
-    Map<String, String> entries;
+    private Map<String, String> entries;
 
-    Dictionary() {
+    void Dictionary() {
         this.entries = new HashMap<>();
     }
 
     /***
-     * Add word and definition to HashMap
-     * @param word
-     * @param definition
+     * Add word to
+     * @param word (required) the actual word
+     * @param definition (required) the definition associated with the given word
      */
     public void newEntry(String word, String definition) {
         this.entries.put(word, definition);
     }
 
     /***
-     * Lookup word inside HashMap
-     * @param word
-     * @return {string}
+     * Lookup word
+     * @param word (required) that we use to look up
+     * @return definition of given word
      */
     public String look (String word) {
         if(this.entries.containsKey(word)) {

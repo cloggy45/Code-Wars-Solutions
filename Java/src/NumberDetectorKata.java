@@ -1,12 +1,16 @@
+package src;
+
 /**
+ * Given a string s, write a method (function) that will return true if its a valid single integer or floating number or false if its not.
  * https://www.codewars.com/kata/is-it-a-number
+ * @author Paul Mcloughlin
  */
 
-public class MyUtilities{
+class NumberDetectorKata {
     /**
      * Given a string s, write a method (function) that will return true if its a valid single integer or floating number or false if its not.
-     * @param {string}
-     * @return {boolean} returns true if string is valid single integer or float, or false if not.
+     * @param  s (required) a string that represents either a integer or float.
+     * @return returns true if string is valid single integer or float, or false if not.
      */
     public boolean isDigit(String s)
     {

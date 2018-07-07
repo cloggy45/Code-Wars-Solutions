@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Code-Wars-Solutions.iml" filepath="$PROJECT_DIR$/.idea/Code-Wars-Solutions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Code-Wars-Solutions.iml" filepath="$PROJECT_DIR$/Code-Wars-Solutions.iml" />
     </modules>
   </component>
 </project>

@@ -1,14 +1,19 @@
+package src;
+
+import java.util.stream.IntStream;
+import static java.lang.Math.toIntExact;
 
 /**
  * https://www.codewars.com/kata/576bb71bbbcf0951d5000044/
+ * @author Paul Mcloughlin
  */
 
-public class Kata
+public class SumKata
 {
     /**
      * Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers.
-     * @param {array}  array of negative nad positive numbers
-     * @return {array} return an array with count of positives and sum of negatives
+     * @param input (required) array of negative and positive numbers
+     * @return return an array with count of positives and sum of negatives
      */
     public static int[] countPositivesSumNegatives(int[] input)
     {
