@@ -1,4 +1,3 @@
-package src;
 
 /***
  * Solution for https://www.codewars.com/kata/shortest-word/

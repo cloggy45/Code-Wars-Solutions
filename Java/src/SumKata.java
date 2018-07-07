@@ -1,4 +1,3 @@
-package src;
 
 import java.util.stream.IntStream;
 import static java.lang.Math.toIntExact;

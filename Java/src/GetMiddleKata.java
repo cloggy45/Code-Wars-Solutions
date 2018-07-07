@@ -1,4 +1,3 @@
-package src;
 
 /**
  * You are going to be given a word. Your job is to return the middle character of the word.

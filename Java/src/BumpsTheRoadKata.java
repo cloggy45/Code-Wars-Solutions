@@ -1,7 +1,6 @@
-package src;
 
-public class BumpsTheRoadKata {
+class BumpsTheRoadKata {
     public static String bumps(final String road) {
-        return "Test"; // your code here
+        return "Woohoo!"; // your code here
     }
 }

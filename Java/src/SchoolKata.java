@@ -1,4 +1,3 @@
-package src;
 
 /***
  * It's the academic year's end, fateful moment of your school report.
