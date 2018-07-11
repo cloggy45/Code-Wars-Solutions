@@ -7,6 +7,8 @@ public class BumpsTheRoadKataTest {
     @Test
     public void bumps() {
         assertEquals(BumpsTheRoadKata.bumps("n"), "Woohoo!");
-        assertEquals(2, 2);
+        assertEquals(BumpsTheRoadKata.bumps("_nnnnnnn_n__n______nn__nn_nnn"), "Car Dead");
+        assertEquals(BumpsTheRoadKata.bumps("______n___n_"), "Woohoo!");
+        assertEquals(BumpsTheRoadKata.bumps("nnnnnnnnnnnnnnnnnnnnn"), "Car Dead");
     }
 }
