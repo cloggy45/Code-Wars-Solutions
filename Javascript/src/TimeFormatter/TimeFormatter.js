@@ -8,10 +8,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class TimeFormatter {
     constructor() {
         this.timeframesInSeconds = new Map([
-            ["year", 2073600],
-            ["day", 86400],
-            ["hour", 3600],
-            ["minute", 60],
+            ["years", 2073600],
+            ["days", 86400],
+            ["hours", 3600],
+            ["minutes", 60],
         ]);
         this.timeframesSelected = new Map([
             ["years", 0],
@@ -22,6 +22,17 @@ class TimeFormatter {
         ]);
     }
     divideSecondsIntoTimeframes(durationInSeconds) {
+        while (durationInSeconds > 60) {
+            for (let [timeframe, timeframeSecs] of this.timeframesInSeconds) {
+                if (durationInSeconds > timeframeSecs) {
+                    durationInSeconds -= timeframeSecs;
+                    let prevTimeFrameSecs = this.timeframesSelected.get(timeframe);
+                    prevTimeFrameSecs += 1;
+                    this.timeframesSelected.set(timeframe, prevTimeFrameSecs);
+                }
+            }
+        }
+        this.timeframesSelected.set("seconds", durationInSeconds);
     }
     /**
      *

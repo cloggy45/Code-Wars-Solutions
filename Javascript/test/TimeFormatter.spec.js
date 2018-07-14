@@ -1,52 +1,46 @@
-const assert = require('assert');
-const sinon = require('sinon');
+const assert = require("assert");
+const sinon = require("sinon");
 
-let { TimeFormatter } = require('../src/TimeFormatter/TimeFormatter');
+let { TimeFormatter } = require("../src/TimeFormatter/TimeFormatter");
 
+describe("formatDuration", () => {
+	let testTimeFormatter;
 
-describe('formatDuration', () => {
-  
-  let testTimeFormatter;
+	before(() => {
+		testTimeFormatter = new TimeFormatter();
+	});
 
-  before(() => {
-    const timeframesInSeconds = new Map([
-      ["year", 2073600],
-      ["day", 86400],
-      ["hour", 3600],
-      ["minute", 60],
-    ]);
+	describe("divideSecondsIntoTimeframes function tests", () => {
+		let spy, expectedResult;
 
-    let timeframesSelected = new Map([
-      ["year", 0],
-      ["day", 0],
-      ["hour", 0],
-      ["minute", 0],
-      ["second", 0]
-    ]);
+		beforeEach(() => {
+			spy = sinon.spy(testTimeFormatter, "divideSecondsIntoTimeframes");
 
-    testTimeFormatter = new TimeFormatter();
-  })
+			expectedResult = new Map([
+				["years", 0],
+				["days", 0],
+				["hours", 0],
+				["minutes", 0],
+				["seconds", 0]
+			]);
+		});
 
-  describe('divideSecondsIntoTimeframes function tests', () => {
+		it("should set seconds to 2", () => {
+			expectedResult.set("minutes", 1).set("seconds", 2);
 
-    const expectedResult = new Map([
-      ["years", 0],
-      ["days", 0],
-      ["hours", 0],
-      ["minutes", 1],
-      ["seconds", 2]
-    ])
+			testTimeFormatter.divideSecondsIntoTimeframes(62);
+			const state = spy.thisValues[0];
+			const timeframesSelected = state.timeframesSelected;
 
-    it('should set seconds to 2', () => {
-      let spy = sinon.spy(testTimeFormatter,"divideSecondsIntoTimeframes");
-      testTimeFormatter.divideSecondsIntoTimeframes(62);
-      const state = spy.thisValues[0];
-      const timeframesSelected = state.timeframesSelected;
-      
-      assert.deepEqual(timeframesSelected, expectedResult);
-    })
-  })
+			assert.deepEqual(timeframesSelected, expectedResult);
+		});
+		// it('should set minute to 2', () => {
 
+		//   testTimeFormatter.divideSecondsIntoTimeframes(120);
+		//   const state = spy.thisValues[0];
+		//   const timeframesSelected = state.timeframesSelected;
 
-})
-
+		//   assert.deepEqual(timeframesSelected, expectedResult)
+		// })
+	});
+});
