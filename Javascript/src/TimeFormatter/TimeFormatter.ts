@@ -16,6 +16,7 @@ class TimeFormatter {
       ["days", 86400],
       ["hours", 3600],
       ["minutes", 60],
+      ["seconds", 1]
     ]);
 
     this.timeframesSelected = new Map([
@@ -27,18 +28,31 @@ class TimeFormatter {
     ]);
   }
 
+  /**
+   * @param timeframe current timeframe
+   * @return next timeframe in list unless last timeframe
+   */
+  public getNextTimeframe (timeframe: string): string {
+    if(timeframe === "years") return timeframe;
+    const list = new Array("seconds","minutes","hours","days","years");
+    return list[list.indexOf(timeframe) + 1];
+  }
+
+  /**
+   * 
+   * @param durationInSeconds 
+   */
   public divideSecondsIntoTimeframes(durationInSeconds: number): void {
-    while(durationInSeconds > 60) {
+    while(durationInSeconds !== 0) {
       for(let [timeframe, timeframeSecs] of this.timeframesInSeconds) {
-        if(durationInSeconds > timeframeSecs) {
+        if(durationInSeconds >= timeframeSecs) {
           durationInSeconds -= timeframeSecs;
           let prevTimeFrameSecs = this.timeframesSelected.get(timeframe);
           prevTimeFrameSecs += 1;
-          this.timeframesSelected.set(timeframe, prevTimeFrameSecs);
+          this.timeframesSelected.set(timeframe, prevTimeFrameSecs);          
         }
       }
     }
-    this.timeframesSelected.set("seconds", durationInSeconds);
   }
 
   /**
