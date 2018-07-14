@@ -2,17 +2,22 @@
   "name": "javascript_katas",
   "version": "1.0.0",
   "description": "A collection of JS katas from codewars",
-  "main": "index.js",
-  "private":true,
+  "private": true,
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^4.1.2"
+    "@babel/cli": "^7.0.0-beta.53",
+    "@babel/core": "^7.0.0-beta.53",
+    "@babel/preset-typescript": "^7.0.0-beta.53",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0"
   }
 }
