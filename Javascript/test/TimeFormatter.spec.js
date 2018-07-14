@@ -1,19 +1,52 @@
 const assert = require('assert');
-let { TimeFormatter } = require('../src/TimeFormatter.js');
+const sinon = require('sinon');
+
+let { TimeFormatter } = require('../src/TimeFormatter/TimeFormatter');
 
 
 describe('formatDuration', () => {
-  let TestTimeFormatter;
+  
+  let testTimeFormatter;
+
   before(() => {
-    TestTimeFormatter = new TimeFormatter();
+    const timeframesInSeconds = new Map([
+      ["year", 2073600],
+      ["day", 86400],
+      ["hour", 3600],
+      ["minute", 60],
+    ]);
+
+    let timeframesSelected = new Map([
+      ["year", 0],
+      ["day", 0],
+      ["hour", 0],
+      ["minute", 0],
+      ["second", 0]
+    ]);
+
+    testTimeFormatter = new TimeFormatter();
   })
-  it('should pass these tests', () => {
-    assert.equal(TestTimeFormatter.formatDuration(0), "now");
-    assert.equal(TestTimeFormatter.formatDuration(62), "1 minute and 2 seconds");
-    assert.equal(TestTimeFormatter.formatDuration(62), "1 minute and 2 seconds");
-    assert.equal(TestTimeFormatter.formatDuration(3600), "1 hour");
-    assert.equal(TestTimeFormatter.formatDuration(3662), "1 hour, 1 minute and 2 seconds");
-    assert.equal(TestTimeFormatter.formatDuration(120), "2 minutes");
+
+  describe('divideSecondsIntoTimeframes function tests', () => {
+
+    const expectedResult = new Map([
+      ["years", 0],
+      ["days", 0],
+      ["hours", 0],
+      ["minutes", 1],
+      ["seconds", 2]
+    ])
+
+    it('should set seconds to 2', () => {
+      let spy = sinon.spy(testTimeFormatter,"divideSecondsIntoTimeframes");
+      testTimeFormatter.divideSecondsIntoTimeframes(62);
+      const state = spy.thisValues[0];
+      const timeframesSelected = state.timeframesSelected;
+      
+      assert.deepEqual(timeframesSelected, expectedResult);
+    })
   })
+
+
 })
 
