@@ -3,23 +3,27 @@
   "version": "1.0.0",
   "description": "A collection of JS katas from codewars",
   "private": true,
+  "program": "${workspaceRoot}/src/",
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "scripts": {
     "test": "mocha"
   },
   "author": "Paul Mcloughlin",
   "license": "ISC",
+  "eslintConfig": {
+    "eslintIgnore": "node_modules/*"
+  },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.53",
     "@babel/core": "^7.0.0-beta.53",
     "@babel/preset-typescript": "^7.0.0-beta.53",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "sinon": "^6.1.3"
   },
   "dependencies": {
     "babel": "^6.23.0",
-    "eslint": "^5.1.0",
-    "sinon": "^6.1.3"
+    "eslint": "^5.1.0"
   }
 }
