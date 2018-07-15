@@ -38,6 +38,37 @@ describe("formatDuration", () => {
 			testTimeFormatterSpy.restore();
 		})
 
+		it("should set 1 hour, 1 minute and 2 seconds", () => {
+			
+			expectedResult.set("seconds", 2).set("minutes", 1).set("hours", 1);
+			
+			testTimeFormatter.divideSecondsIntoTimeframes(3662);
+			
+			const timeframesSelected =  testTimeFormatterSpy.thisValues[0].timeframesSelected
+			
+			assert.deepEqual(timeframesSelected, expectedResult);
+		});
+
+		it("should set hours to 1", () => {
+			expectedResult.set("hours", 1)
+			testTimeFormatter.divideSecondsIntoTimeframes(3600);
+			
+			const timeframesSelected =  testTimeFormatterSpy.thisValues[0].timeframesSelected
+      
+			assert.deepEqual(timeframesSelected, expectedResult);
+		})
+
+
+		it("should set seconds to 1", () => {
+      
+      expectedResult.set("seconds", 1);
+			testTimeFormatter.divideSecondsIntoTimeframes(1);
+			
+			const timeframesSelected =  testTimeFormatterSpy.thisValues[0].timeframesSelected
+      
+			assert.deepEqual(timeframesSelected, expectedResult);
+		});
+
 		it("should set seconds to 2", () => {
       
       expectedResult.set("minutes", 1).set("seconds", 2);

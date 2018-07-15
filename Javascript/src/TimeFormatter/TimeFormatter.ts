@@ -48,7 +48,7 @@ class TimeFormatter {
         if(durationInSeconds >= timeframeSecs) {
           durationInSeconds -= timeframeSecs;
           let prevTimeFrameSecs = this.timeframesSelected.get(timeframe);
-          prevTimeFrameSecs += 1;
+          prevTimeFrameSecs ++;
           this.timeframesSelected.set(timeframe, prevTimeFrameSecs);          
         }
       }
